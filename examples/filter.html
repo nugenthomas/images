@@ -19,15 +19,17 @@
 	{
 	  // set canvas size
 	  createCanvas(1200, 300);
+
+	  // add filters to images
+	  thresholdImage.filter(BLUR,5);
+	  grayImage.filter(GRAY); 
 	}
 	 
 	function draw() 
 	{
 	  background(255);
 	  
-	  // add filters to images
-	  thresholdImage.filter(THRESHOLD, 0.5);
-	  grayImage.filter(GRAY); 
+
 	  
 	   // display images
 	  image(originalImage, 0, 0); 

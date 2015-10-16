@@ -4,46 +4,6 @@
 	<script language="javascript" type="text/javascript" src="../helpers/p5.js"></script>
   <style> body {padding: 0; margin: 0;} </style>
   <script>
- //  var originalImage, thresholdImage, invertImage;
- 
- //  function preload() {
-	//   // load original image
-	//   originalImage = loadImage("../assets/statueofliberty.jpg");
-	  
-	//   // load in a few more copies (you could also use clone())
-	//   thresholdImage = loadImage("../assets/statueofliberty.jpg");
-	//   grayImage = loadImage("../assets/statueofliberty.jpg"); 
-	// }
-
-	// function setup() 
-	// {
-	//   // set canvas size
-	//   createCanvas(1200, 300);
-	// }
-	 
-	// function draw() 
-	// {
-	//   background(255);
-	  
-	//   // add filters to images
-	//   thresholdImage.filter(THRESHOLD, 0.5);
-	//   grayImage.filter(GRAY); 
-	  
-	//    // display images
-	//   image(originalImage, 0, 0); 
-	//   image(thresholdImage, 200, 0);  
-	//   image(grayImage, 400, 0);
-	  
-	//   // display text labels
-	//   fill(0);
-	//   noStroke();
-	//   text('Original', 25, 25);
-	//   text('Threshhold', 425, 25);
-	//   text('Greyscale', 825, 25);
-
-	//   blend(thresholdImage, 0, 0, 33, 100, 67, 0, 33, 100, DARKEST);
-	// }
-
 
 	var img0;
 var img1;
@@ -55,8 +15,6 @@ function preload() {
 
 function setup() {
 	createCanvas(1000, 362);
-   
-  //image(img1, 300, 0);
 
   
 }
@@ -65,10 +23,11 @@ function draw(){
 	clear();
 
 	background(img0);
+	//blend(srcImage,sx,sy,sw,sh,dx,dy,dw,dh,blendMode)
 	//other blend modes you can try:
   //BLEND | DARKEST | LIGHTEST | DIFFERENCE | MULTIPLY| EXCLUSION | SCREEN 
   //REPLACE | OVERLAY | HARD_LIGHT | SOFT_LIGHT | DODGE | BURN | ADD | NORMAL
-  blend(img1, 0, 0, img1.width, img1.height, mouseX, 0, img1.width, img1.height, MULTIPLY);
+  blend(img1, 0, 0, img1.width, img1.height, mouseX, 0, img1.width, img1.height, DARKEST);
 }
   </script>
 </head>
