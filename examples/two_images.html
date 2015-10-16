@@ -1,0 +1,53 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script language="javascript" type="text/javascript" src="../helpers/p5.js"></script>
+  <style> body {padding: 0; margin: 0;} </style>
+  <script>
+
+    //save images as global variables
+    var bg, ufo;
+     
+    function preload() {
+      // load image
+      bg = loadImage("../assets/nyc.jpg");
+      ufo = loadImage("../assets/ufo.png");
+    }
+    
+    function setup() 
+    {  
+      // hide mouse cursor
+      noCursor();
+      createCanvas(bg.width/4, bg.height/4);
+    }
+     
+    function draw() 
+    {
+      
+      // display background image
+      image(bg, 0, 0, bg.width/4, bg.height/4)
+      //or I could have done: background(bg);
+      
+      // center the ufo to the cursor
+      imageMode(CENTER);
+      // display ufo
+      image(ufo, mouseX, mouseY,ufo.width/5,ufo.height/5);
+
+      //shoot lasers when the mouse is down
+      if(mouseIsPressed){
+        if(mouseX > windowWidth/2){
+          stroke("red");
+          line(mouseX,mouseY,mouseX-100,mouseY+100);
+        } else{
+          stroke("red");
+          line(mouseX,mouseY,mouseX+100,mouseY+100);
+        }
+      }  
+    }
+</script>
+</head>
+
+<body>
+</body>
+</html>
+

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script language="javascript" type="text/javascript" src="helpers/p5.js"></script>
+  <style> body {margin: 20px;font-family: Arial;}#wrapper{max-width:800px;margin:0 auto;} code{font-weight: bold;color:forestgreen;} </style>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+</head>
+<body>
+  <div id="wrapper">
+    <h1>Images in p5</h1>
+  <p>You can load and display existing images using the following functions:</p>
+  <ul>
+    <li><a href="http://p5js.org/reference/#/p5/loadImage">loadImage()</a></li>
+    <li><a href="http://p5js.org/reference/#/p5/image">image()</a></li>
+    <li><a href="http://p5js.org/reference/#/p5/tint">tint()</a></li>
+    <li><a href="http://p5js.org/reference/#/p5/noTint">noTint()</a></li>
+    <li><a href="http://p5js.org/reference/#/p5/imageMode">imageMode()</a></li>
+  </ul>
+
+    <p>You can also read them pixel by pixel. This lets you distort or filter the image. 
+
+    <ul>
+      <li><a href="http://p5js.org/reference/#/p5/pixels[]">pixels[]</a></li>
+      <li><a href="http://p5js.org/reference/#/p5/blend">blend()</a></li>
+      <li><a href="http://p5js.org/reference/#/p5/copy">copy()</a></li>
+      <li><a href="http://p5js.org/reference/#/p5/filter">filter()</a></li>
+      <li><a href="http://p5js.org/reference/#/p5/get">get()</a></li>
+      <li><a href="http://p5js.org/reference/#/p5/loadPixels">loadPixels()</a></li>
+      <li><a href="http://p5js.org/reference/#/p5/set">set()</a></li>
+      <li><a href="http://p5js.org/reference/#/p5/updatePixels">updatePixels()</a></li>
+    </ul>
+
+<p>One of the most important functions in those lists is <code>image()</code>. It can take these five parameters: <code>image(imgVariable,x,y,width,height)</code>, but only the first one is required. You can do any of the following:<br />
+
+  <pre><code>
+
+    image(imgVariable);
+
+    image(imgVariable,100,200); 
+
+    image(imgVariable, 100, 200, imgVariable.width/2, imgVariable.height/2);
+    </code></pre>
+
+<hr />
+  <h2>Examples</h2>
+ <h3><a href="examples/image_load.html">Image load</a></h3>
+ 
+ <p>This is a basic example that shows you how to load an image using <code>loadImage()</code> and <code>image()</code>.</p>
+
+<hr />
+    <h3><a href="examples/scale.html">Image scale</a></h3>
+    <p>This example shows you how to scale an image using the mouse position.</p>
+<hr />
+
+    <h3><a href="examples/two_images.html">Multiple interactive images</a></h3>
+    <p>This example uses two images to create an interactive scene.</p>
+
+<hr />
+    <h3><a href="examples/pixelize.html">Pixelize</a></h3>
+    <p>This example takes an image and draws it by exracting the color of individual pixels and drawing large rectangles based off that color. In order to do this you need to use the <code>.loadPixels()</code> and <code>.get()</code> methods</p>
+
+<hr />    
+    <h3><a href="examples/filter.html">Filter</a></h3>
+    <p>This example shows how to apply filters to images. For more about all the filter options, <a href="http://p5js.org/reference/#/p5/filter">view the reference</a>.</p>
+
+    <p><strong>THRESHOLD</strong><br />
+      <code>.filter(THRESHOLD, 0.5); </code><br />
+    Converts the image to black and white pixels depending if they are above or below the threshold defined by the level parameter. The parameter must be between 0.0 (black) and 1.0 (white). If no level is specified, 0.5 is used. </p>
+
+    <p><strong>GRAY</strong><br />
+       <code>.filter(GRAY); </code><br />
+      Converts any colors in the image to grayscale equivalents. No parameter is used. </p>
+
+    <p><strong>OPAQUE</strong><br />
+      <code>.filter(OPAQUE); </code><br />
+     Sets the alpha channel to entirely opaque. No parameter is used.</p>
+
+    <p><strong>INVERT</strong><br />
+       <code>.filter(INVERT); </code><br />
+     Sets each pixel to its inverse value. No parameter is used. </p>
+
+    <p><strong>POSTERIZE</strong><br />
+       <code>.filter(POSTERIZE,10); </code><br />
+     Limits each channel of the image to the number of colors specified as the parameter. The parameter can be set to values between 2 and 255, but results are most noticeable in the lower ranges. </p>
+
+    <p><strong>BLUR</strong><br />
+       <code>.filter(BLUR,1); </code><br />
+     Executes a Guassian blur with the level parameter specifying the extent of the blurring. If no parameter is used, the blur is equivalent to Guassian blur of radius 1. Larger values increase the blur. </p>
+
+    <p><strong>ERODE</strong><br />
+       <code>.filter(ERODE); </code><br />
+     Reduces the light areas. No parameter is used. </p>
+
+    <p><strong>DILATE</strong><br />
+       <code>.filter(DILATE); </code><br />
+     Increases the light areas. No parameter is used.</p>
+
+
+  </ul>
+<hr />
+  <h3><a href="examples/blend.html">Blending</a></h3>
+  <p>This example shows you how to blend two images using the <a href="http://p5js.org/reference/#/p5/blend">blend()</a> method. This method takes a lot of parameters so be sure to read through <a href="http://p5js.org/reference/#/p5/blend">the reference page</a> on what each parameter does. The blend modes you can use are:</p>
+
+<li><strong>BLEND</strong> - linear interpolation of colours. This is the default blending mode.</li>
+<li><strong>ADD</strong> - sum of A and B</li>
+<li><strong>DARKEST</strong> - only the darkest colour succeeds</li>
+<li><strong>LIGHTEST</strong> - only the lightest colour succeeds</li>
+<li><strong>DIFFERENCE</strong> - subtract colors from underlying image.</li>
+<li><strong>EXCLUSION</strong> - similar to DIFFERENCE, but less extreme.</li>
+<li><strong>MULTIPLY</strong> - multiply the colors, result will always be darker.</li>
+<li><strong>SCREEN</strong> - opposite multiply, uses inverse values of the colors.</li>
+<li><strong>REPLACE</strong> - the pixels entirely replace the others and don't utilize alpha (transparency) values.</li>
+<li><strong>OVERLAY</strong> - mix of MULTIPLY and SCREEN . Multiplies dark values, and screens light values.</li>
+<li><strong>HARD_LIGHT</strong> - SCREEN when greater than 50% gray, MULTIPLY when lower.</li>
+<li><strong>SOFT_LIGHT</strong> - mix of DARKEST and LIGHTEST. Works like OVERLAY, but not as harsh.</li>
+<li><strong>DODGE</strong> - lightens light tones and increases contrast, ignores darks.</li>
+<li><strong>BURN</strong> - darker areas are applied, increasing contrast, ignores lights.</li>
+<hr />
+  
+
+  <h2>Assignment</h2>
+  <p>Using the template in the assigments folder, complete the following assignments. Spend some time reviewing the examples before you get started.</p>
+  <p>This assigment counts as two assigments, on a 20 point scale.</p>
+
+  <h3><a href="assignment/assignment.html">Create an interactive scene</a></h3>
+  <p>Your program should:</p>
+  <ul>
+    <li>Use at least 3 images (3 points)</li>
+    <li>Respond to mouse clicks (2 point)</li>
+    <li>Respond to the mouse position (2 point)</li>
+    <li>Use filter(s) (2 points)</li>
+    <li>Use blending (2 points)</li>
+  </ul>
+<p>You will also be graded on:
+<ul>
+  <li>Concept, composition and creativity (4 points)</li>
+  <li>Whether the result feels intentional (1 point)</li>
+  <li>How well the code is written syntactically, and if there are no errors (3 points)</li>
+  <li>How cleanly the code is written (1 point). This means organizing your code in a logical sequence, commenting, and indenting.</li>
+</ul>
+
+
+</div>
+</body>
+
+</html>

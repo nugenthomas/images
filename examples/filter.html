@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+	<script language="javascript" type="text/javascript" src="../helpers/p5.js"></script>
+  <style> body {padding: 0; margin: 0;} </style>
+  <script>
+  var originalImage, thresholdImage, invertImage;
+ 
+  function preload() {
+	  // load original image
+	  originalImage = loadImage("../assets/statueofliberty.jpg");
+	  
+	  // load in a few more copies (you could also use clone())
+	  thresholdImage = loadImage("../assets/statueofliberty.jpg");
+	  grayImage = loadImage("../assets/statueofliberty.jpg"); 
+	}
+
+	function setup() 
+	{
+	  // set canvas size
+	  createCanvas(1200, 300);
+	}
+	 
+	function draw() 
+	{
+	  background(255);
+	  
+	  // add filters to images
+	  thresholdImage.filter(THRESHOLD, 0.5);
+	  grayImage.filter(GRAY); 
+	  
+	   // display images
+	  image(originalImage, 0, 0); 
+	  image(thresholdImage, 400, 0);  
+	  image(grayImage, 800, 0);
+	  
+	  // display text labels
+	  fill(0);
+	  noStroke();
+	  text('Original', 25, 25);
+	  text('Threshhold', 425, 25);
+	  text('Greyscale', 825, 25);
+	}
+  </script>
+</head>
+
+<body>
+</body>
+</html>

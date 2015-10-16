@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+	<script language="javascript" type="text/javascript" src="../helpers/p5.js"></script>
+  <style> body {padding: 0; margin: 0;} </style>
+  <script>
+
+  //declare your image as a global variable
+  var leaf; 
+
+	//you always want to load your images inside a preload() function. 
+	//this makes sure the browser is finished loading the image before 
+	//it starts doing calculations in the setup and draw function
+
+	function preload(){
+
+		leaf = loadImage("../assets/fall_leaf.png");  // Load the image
+	}
+
+
+	function setup() {
+
+	  createCanvas(windowWidth, windowHeight);
+
+	  //this sets point (0, 0) of the image to the center
+	  //which means that if it follows our cursor
+	  //the image will be centered on the cursor
+	  //instead of in the upper left-hand corner
+	  imageMode(CENTER);
+	}
+
+	function draw() {
+
+	  // if you want to scale down the image,
+	  // you can divide the width or length
+	  // In this example I'm dividing it by 2 so it will be half the size
+	  
+	  image(leaf, mouseX, mouseY, leaf.width/2, leaf.height/2);
+	}
+
+	</script>
+</head>
+
+<body>
+</body>
+</html>

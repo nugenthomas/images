@@ -1,0 +1,57 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+	<script language="javascript" type="text/javascript" src="../helpers/p5.js"></script>
+  <style> body {padding: 0; margin: 0;} </style>
+
+  <script>
+
+  //set up our global variables
+  var img;
+
+  //the bigger the number the more pixelized it will be
+	var pointSize = 10;
+
+	//preload the image
+	function preload() {
+	  img = loadImage("../assets/statueofliberty.jpg");
+	}
+
+
+	function setup() {
+	  createCanvas(720, 400);
+	  noStroke();
+	  background(255);
+	  imageMode(CENTER);
+
+	  //in order to read each pixel of the image
+	  //we have to use loadPixels() to load it
+	  //into our program
+	  img.loadPixels();
+	}
+
+	function draw() {
+		//get a random width and height
+		//we use floor to round it down to a whole number
+	  var x = floor(random(img.width));
+	  var y = floor(random(img.height));
+
+	  //then we get the pixel at
+	  //random location x, y
+	  //and save the color of it to the variable pix
+	  var pix = img.get(x, y);
+
+	  //set the fill of our rectangle to the color of that pixel
+	  fill(pix, 128);
+
+	  //draw the recatangle
+	  rect(x, y, pointSize, pointSize);
+	}
+
+
+  </script>
+</head>
+
+<body>
+</body>
+</html>

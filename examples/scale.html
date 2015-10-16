@@ -1,0 +1,27 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+	<script language="javascript" type="text/javascript" src="../helpers/p5.js"></script>
+  <style> body {padding: 0; margin: 0;} </style>
+  <script>
+  var img;
+	function preload() {
+		// note that in your sketches, your load image probably won't require a path.
+		// you will use something like loadImage("shell.jpg")
+	 	img = loadImage("../assets/fall_leaf.png");
+	}
+
+	function setup() {
+		createCanvas(480, 480);
+	}
+
+	function draw() {
+		background(125, 125, 125);
+		image(img, 240 - mouseX , 240 - mouseY, mouseX * 2, mouseY * 2);
+	}
+	</script>
+</head>
+
+<body>
+</body>
+</html>
