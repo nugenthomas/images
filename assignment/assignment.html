@@ -6,27 +6,70 @@
   <style> body {padding: 0; margin: 0;} </style>
   <script>
 
-  //declare your images as a global variable
- 
+  		//declare your images as a global variable
+ 		var alien;
+ 		var pointSize = 20;
 
 	function preload(){
 
+		bg = loadImage ("../assets/bg.jpeg");
+		alien = loadImage ("../assets/alien.png");
+		acid = loadImage ("../assets/pattern.jpg");
+		speech = loadImage ("../assets/speech.png");
+		beam = loadImage ("../assets/beam.png");
+		beam2 = loadImage ("../assets/beam2.png");
+		alieneye = loadImage ("../assets/alieneye.png");
+		eyeball = loadImage ("../assets/eyeball.png");
 		// Load the image
 	}
 
 
 	function setup() {
 
-	  //set up your canvas
+	  	createCanvas(windowWidth, windowHeight); //set up your canvas
+	 	noCursor(); //hide mouse cursor
+	  	imageMode(CENTER); //center image
+	  	bg.filter(GRAY); //background filter
+	 	acid.loadPixels(); //loadpixel pattern
+
 
 	}
 
 	function draw() {
+		//Load Background
+		image(bg,680, 400, bg.width/2.5, bg.height/2.5);
 
-		//draw
+		//blend pattern into background
+		blend(acid, 0, 0, acid.width, acid.height, 0,0,  acid.width,acid.height, OVERLAY);
+		
+		//Random Circle Effect
+	 	var x = floor(random(acid.width));
+	  	var y = floor(random(acid.height));
+	  	//then we get the pixel at
+	  	//random location x, y
+	  	//and save the color of it to the variable pix
+	 	 var pix = acid.get(x, y);
+	  	//set the fill of our rectangle to the color of that pixel
+	  	fill(pix, 128);
+	  	//draw the recatangle
+	 	ellipse(x, y, pointSize, pointSize);
+	 	//draw alien
+		image(alien, mouseX, mouseY,alien.width/1.5, alien.height/1.5);
+
+		
+		//pressed mouse for stuff
+		  if(mouseIsPressed){
+          if(mouseX > windowWidth/2){
+          image(speech,mouseX+100,mouseY-100,speech.width/9, speech.height/9);
+        } else{
+          image(alieneye,mouseX,mouseY,alieneye.width/1.5, alieneye.height/1.5);
+          image(beam,mouseX+80,mouseY+100);
+          image(beam2,mouseX-135,mouseY+100);
+          blend(eyeball,0,0,eyeball.width, eyeball.height,0,0, eyeball.width/1.3, eyeball.height/1.3,OVERLAY);
+        }
 
 	}
-
+}
 	</script>
 </head>
 
